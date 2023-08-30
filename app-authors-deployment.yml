@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - name: app-books
-          image: jaimesalvador/app-authors:latest
+          image: milekaterine/app-authors-examen:latest
           ports:
             - containerPort: 9090
           livenessProbe:
             httpGet:
               port: 9090
-              path: /q/health/live
+              path: /health
             initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 3

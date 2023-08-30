@@ -2,6 +2,7 @@ package com.distribuida.books.authors.rest;
 
 import com.distribuida.books.authors.db.Author;
 import com.distribuida.books.authors.repo.AuthorRepository;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -23,7 +24,7 @@ import java.util.List;
 @Path("/authors")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Transactional
+@RequestScoped
 public class AuthorRest {
 
     @Inject

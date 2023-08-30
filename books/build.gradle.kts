@@ -1,3 +1,4 @@
+
 plugins {
     id("java")
 
@@ -33,4 +34,23 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+
+
+val fatJar = task("fatJar", type = org.gradle.jvm.tasks.Jar::class) {
+    manifest {
+        attributes["Implementation-Title"] = "Gradle Jar File Example"
+        attributes["Implementation-Version"] = version
+        attributes["Main-Class"] = "io.helidon.microprofile.cdi.Main"
+    }
+    from(configurations.runtimeClasspath.get().map({ if (it.isDirectory) it else zipTree(it) }))
+    with(tasks.jar.get() as CopySpec)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks {
+    "build" {
+        dependsOn(fatJar)
+    }
 }
