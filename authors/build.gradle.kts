@@ -47,20 +47,6 @@ tasks.test {
 }
 
 
-/*
-tasks.jar {
-    manifest.attributes["Main-Class"] = "io.helidon.microprofile.cdi.Main"
-}
-
-tasks.withType<Jar> {
-    manifest {
-        attributes["Main-Class"] = "io.helidon.microprofile.cdi.Main"
-    }
-}
-*/
-
-
-
 val fatJar = task("fatJar", type = Jar::class) {
     manifest {
         attributes["Implementation-Title"] = "Gradle Jar File Example"
